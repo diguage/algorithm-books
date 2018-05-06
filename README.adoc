@@ -1,0 +1,21 @@
+= 看看书，刷刷算法题
+
+== 备选书籍
+
+. https://book.douban.com/subject/27008702/[《剑指Offer·第2版》]
+. https://book.douban.com/subject/26638586/[《程序员代码面试指南》]
+. https://book.douban.com/subject/10432347/[《算法·英文版》]
+. https://book.douban.com/subject/24708288/[《算法设计与分析基础·第3版》]
+. https://book.douban.com/subject/20432061/[《算法导论·第3版》]
+
+
+== 《剑指Offer·第二版》
+
+. 占位符
+. 占位符
+. 数组中重复的数字
+. 二维数组中的查找
+. 替换字符串中的空格
+. 从尾到头打印链表
+. 输入二叉树的前序遍历和中序遍历的结果，重建出二叉树。
+
