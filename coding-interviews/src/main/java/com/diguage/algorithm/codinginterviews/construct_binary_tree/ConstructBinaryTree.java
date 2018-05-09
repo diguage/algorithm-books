@@ -1,5 +1,7 @@
 package com.diguage.algorithm.codinginterviews.construct_binary_tree;
 
+import com.diguage.algorithm.codinginterviews.tree.BinaryTreeNode;
+
 /**
  * 输入某二叉树的前序遍历和中序遍历的结果，请重建出该二叉树。
  * 假设输入的前序遍历和中序遍历的结果中都不含重复的数字。
@@ -18,13 +20,8 @@ package com.diguage.algorithm.codinginterviews.construct_binary_tree;
  * @author D瓜哥, https://www.diguage.com/
  */
 public class ConstructBinaryTree {
-    public static class BinaryTreeNode {
-        int value;
-        BinaryTreeNode left;
-        BinaryTreeNode right;
-    }
 
-    public static BinaryTreeNode construct(int[] preorder, int[] midorder) {
+    public static BinaryTreeNode<Integer> construct(int[] preorder, int[] midorder) {
         if (preorder.length != midorder.length
                 || null == preorder || preorder.length == 0
                 || null == midorder || midorder.length == 0) {
@@ -37,15 +34,15 @@ public class ConstructBinaryTree {
                 preorder.length);
     }
 
-    public static BinaryTreeNode findRoot(int[] preorder, int preorderStart,
-                                          int[] midorder, int midorderStart,
-                                          int length) {
+    public static BinaryTreeNode<Integer> findRoot(int[] preorder, int preorderStart,
+                                                   int[] midorder, int midorderStart,
+                                                   int length) {
         if (preorderStart >= preorder.length || midorderStart >= preorder.length) {
             return null;
         }
 
         int rootValue = preorder[preorderStart];
-        BinaryTreeNode root = new BinaryTreeNode();
+        BinaryTreeNode<Integer> root = new BinaryTreeNode<>();
         root.value = rootValue;
         if (length <= 1) {
             return root;
@@ -64,7 +61,7 @@ public class ConstructBinaryTree {
             int childLeftLength = index - midorderStart;
 
             if (childLeftLength > 0) {
-                BinaryTreeNode left = findRoot(
+                BinaryTreeNode<Integer> left = findRoot(
                         preorder, childLeftPreStart,
                         midorder, childLeftMidStart,
                         childLeftLength);
@@ -77,7 +74,7 @@ public class ConstructBinaryTree {
             int childRightMidStart = index + 1;
             int childRightLength = midorderStart + length - index - 1;
             if (childRightLength > 0) {
-                BinaryTreeNode right = findRoot(
+                BinaryTreeNode<Integer> right = findRoot(
                         preorder, childRightPreStart,
                         midorder, childRightMidStart,
                         childRightLength);
@@ -87,19 +84,10 @@ public class ConstructBinaryTree {
         }
     }
 
-    public static void printSuforderTree(BinaryTreeNode root) {
-        if (null == root) {
-            return;
-        }
-        printSuforderTree(root.left);
-        printSuforderTree(root.right);
-        System.out.print(root.value + ", ");
-    }
-
     public static void main(String[] args) {
         int[] preorder = {1, 2, 4, 7, 3, 5, 6, 8};
         int[] midorder = {4, 7, 2, 1, 5, 3, 8, 6};
-        BinaryTreeNode tree = construct(preorder, midorder);
-        printSuforderTree(tree);
+        BinaryTreeNode<Integer> tree = construct(preorder, midorder);
+        tree.printSuforder();
     }
 }
