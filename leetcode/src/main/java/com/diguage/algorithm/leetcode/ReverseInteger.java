@@ -34,6 +34,9 @@ import java.util.List;
  * == Note
  *
  * Assume we are dealing with an environment which could only store integers within the 32-bit signed integer range: [−231,  231 − 1]. For the purpose of this problem, assume that your function returns 0 when the reversed integer overflows.
+ *
+ * @author D瓜哥, https://www.diguage.com/
+ * @since 2018-07-01
  */
 public class ReverseInteger {
     public static int reverse(int x) {
@@ -51,7 +54,7 @@ public class ReverseInteger {
         }
 
         boolean zeroOfEnd = true;
-        List<Integer> bitNums = new ArrayList<>(15);
+        List<Integer> bitNums = new ArrayList<>(25);
         for (int i = positiveNum; i > 0; ) {
             int bitNum = i % 10;
             i = i / 10;
